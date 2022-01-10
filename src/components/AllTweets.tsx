@@ -51,7 +51,7 @@ export default function AllTweets() {
                     <Link to={`/user/${tweet.author.id}`} replace>
                         <div className="tweet-header">
                             <img
-                                src={tweet.author.profile.avatar}
+                                src={tweet.author?.profile?.avatar}
                                 style={{ width: '40px', borderRadius: '50px' }}
                                 alt="avatar"
                             />
@@ -93,7 +93,7 @@ export default function AllTweets() {
 
                         <span style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
                             <CreateComment
-                                avatar={tweet.author.profile.avatar}
+                                avatar={tweet.author?.profile?.avatar}
                                 name={tweet.author.name}
                                 tweetContent={tweet.content}
                                 id={tweet.id}

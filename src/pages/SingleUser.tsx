@@ -8,13 +8,11 @@ import { ME_QUERY, USER_QUERY } from '../gql/queries';
 import '../styles/primary.css';
 import '../styles/profile.css';
 
-interface ParamType {
-    id: string;
-}
-
 export default function SingleUser() {
     const navigate = useNavigate();
-    const { id } = useParams() as ParamType;
+    const { id } = useParams() as {
+        id: string;
+    };
     const { loading, error, data } = useQuery(USER_QUERY, { variables: { id: parseInt(id) } });
 
     const { loading: meLoading, error: meError, data: meData } = useQuery(ME_QUERY);

@@ -7,10 +7,6 @@ import { TWEET_QUERY } from '../gql/queries';
 import '../styles/primary.css';
 import '../styles/home.css';
 
-interface ParamType {
-    id: string;
-}
-
 interface CommentType {
     id: number;
     content: string;
@@ -27,7 +23,9 @@ interface CommentType {
 
 export default function SingleTweet() {
     const navigate = useNavigate();
-    const { id } = useParams() as ParamType;
+    const { id } = useParams() as {
+        id: string;
+    };
 
     const { loading, error, data } = useQuery(TWEET_QUERY, {
         variables: { id: parseInt(id) }
@@ -66,11 +64,11 @@ export default function SingleTweet() {
                         }}
                     >
                         <img
-                            src={data.tweet.author.profile.avatar}
+                            src={data.tweet.author?.profile.avatar}
                             style={{ width: '40px', borderRadius: '50%' }}
                             alt="avatar"
                         />
-                        <h5>{data.tweet.author.profile.name}</h5>
+                        <h5>{data.tweet.author?.profile?.name}</h5>
                     </div>
 
                     <p

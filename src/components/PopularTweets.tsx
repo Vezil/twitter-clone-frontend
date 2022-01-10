@@ -47,7 +47,7 @@ export default function PopularTweets() {
                     <div className="data-title">
                         <div className="title-logo">
                             <img
-                                src={tweet.author.profile.avatar}
+                                src={tweet.author?.profile?.avatar}
                                 style={{ width: '40px', borderRadius: '50%' }}
                                 alt="avatar"
                             />
