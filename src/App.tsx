@@ -1,5 +1,5 @@
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import { setContext } from 'apollo-link-context';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -35,6 +35,8 @@ const client = new ApolloClient({
     link: link as any,
     cache: new InMemoryCache()
 });
+
+const isLoggedIn = !!window.localStorage.token;
 
 function App() {
     return (
@@ -82,9 +84,15 @@ function App() {
                         }
                     ></Route>
 
-                    <Route path="/landing" element={<LandingPage />}></Route>
-                    <Route path="/signup" element={<Signup />}></Route>
-                    <Route path="/login" element={<Login />}></Route>
+                    <Route
+                        path="/landing"
+                        element={isLoggedIn ? <Navigate to={{ pathname: '/' }} /> : <LandingPage />}
+                    ></Route>
+                    <Route
+                        path="/signup"
+                        element={isLoggedIn ? <Navigate to={{ pathname: '/' }} /> : <Signup />}
+                    ></Route>
+                    <Route path="/login" element={isLoggedIn ? <Navigate to={{ pathname: '/' }} /> : <Login />}></Route>
                 </Routes>
             </Router>
         </ApolloProvider>

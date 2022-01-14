@@ -50,11 +50,15 @@ export default function AllTweets() {
                 <div className="tweet-container" key={index}>
                     <Link to={`/user/${tweet.author.id}`} replace>
                         <div className="tweet-header">
-                            <img
-                                src={tweet.author?.profile?.avatar}
-                                style={{ width: '40px', borderRadius: '50px' }}
-                                alt="avatar"
-                            />
+                            {tweet.author?.profile?.avatar ? (
+                                <img
+                                    src={tweet.author.profile.avatar}
+                                    style={{ width: '40px', borderRadius: '50px' }}
+                                    alt="avatar"
+                                />
+                            ) : (
+                                <i className="fa fa-user fa-2x" aria-hidden="true"></i>
+                            )}
 
                             <div className="name-container">
                                 <h4 className="name">{tweet.author.name}</h4>
