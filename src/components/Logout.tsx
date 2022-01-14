@@ -44,7 +44,11 @@ export default function Logout() {
         <div className="logout">
             <span onClick={openModal} style={{ flex: 1, flexDirection: 'row' }}>
                 <h4>
-                    <img src={me?.profile?.avatar} style={{ width: '50px', borderRadius: '50%' }} alt="avatar" />
+                    {me?.profile?.avatar ? (
+                        <img src={me.profile.avatar} style={{ width: '50px', borderRadius: '50%' }} alt="avatar" />
+                    ) : (
+                        <i className="fa fa-user fa-2x" aria-hidden="true"></i>
+                    )}
 
                     <span style={{ marginLeft: '10px', marginTop: '-10px' }}>{me.name}</span>
                     <span style={{ marginLeft: '30px' }}>

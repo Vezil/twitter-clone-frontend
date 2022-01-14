@@ -46,11 +46,15 @@ export default function PopularTweets() {
                 <div className="popular-tweet-container" key={tweet.id}>
                     <div className="data-title">
                         <div className="title-logo">
-                            <img
-                                src={tweet.author?.profile?.avatar}
-                                style={{ width: '40px', borderRadius: '50%' }}
-                                alt="avatar"
-                            />
+                            {tweet.author?.profile?.avatar ? (
+                                <img
+                                    src={tweet.author.profile.avatar}
+                                    style={{ width: '40px', borderRadius: '50%' }}
+                                    alt="avatar"
+                                />
+                            ) : (
+                                <i className="fa fa-user fa-2x" aria-hidden="true"></i>
+                            )}
                             <p className="tweet-content">{tweet.content}</p>
                         </div>
                         <span className="date">{format(new Date(tweet.createdAt), 'MM/dd/yy')}</span>

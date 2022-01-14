@@ -36,6 +36,11 @@
     margin-bottom: 15px;
 }
 
+.title-logo > i {
+    padding-top: 8px;
+    padding-left: 10px;
+}
+
 .popular-tweet-container {
     border-bottom: 1px solid var(--accent);
     margin-bottom: 20px;

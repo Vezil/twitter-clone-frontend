@@ -61,9 +61,9 @@ export default function SingleUser() {
                         </div>
 
                         <div className="avatar">
-                            {data.user.profile.avatar ? (
+                            {data.user?.profile?.avatar ? (
                                 <img
-                                    src={data.user.profile.avatar}
+                                    src={data.user?.profile?.avatar}
                                     style={{ width: '150px', borderRadius: '50%' }}
                                     alt="avatar"
                                 />
@@ -75,7 +75,11 @@ export default function SingleUser() {
                             {idOfFollowers.includes(data.user.id) ? (
                                 <UnfollowUser id={followerId.id} />
                             ) : (
-                                <FollowUser id={data.user.id} name={data.user.name} avatar={data.user.profile.avatar} />
+                                <FollowUser
+                                    id={data.user.id}
+                                    name={data.user.name}
+                                    avatar={data.user?.profile?.avatar}
+                                />
                             )}
                         </div>
 
