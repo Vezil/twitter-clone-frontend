@@ -48,10 +48,10 @@ export default function Login() {
             >
                 <Form>
                     <Field name="email" type="text" placeholder="Email" />
-                    <ErrorMessage name="email" component={'div'} />
+                    <ErrorMessage name="email" render={msg => <div className="error-message">{msg}</div>} />
 
                     <Field name="password" type="password" placeholder="Password" />
-                    <ErrorMessage name="password" component={'div'} />
+                    <ErrorMessage name="password" render={msg => <div className="error-message">{msg}</div>} />
 
                     <button type="submit" className="login-register-button">
                         <span>Login</span>

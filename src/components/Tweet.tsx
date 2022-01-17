@@ -70,7 +70,7 @@ export default function Tweet() {
                 >
                     <Form>
                         <Field name="content" type="text" as="textarea" placeholder="What's happening..." />
-                        <ErrorMessage name="content" component={'div'} />
+                        <ErrorMessage name="content" render={msg => <div className="error-message">{msg}</div>} />
 
                         <div className="footer"></div>
 

@@ -108,7 +108,7 @@ export default function CreateReply({ avatar, name, id, commentContent, commentI
                         <img src={data.me.profile.avatar} style={{ width: '40px', borderRadius: '50%' }} alt="avatar" />
 
                         <Field name="content" type="text" as="textarea" placeholder="Tweet your reply..." />
-                        <ErrorMessage name="content" component={'div'} />
+                        <ErrorMessage name="content" render={msg => <div className="error-message">{msg}</div>} />
 
                         <div className="footer"></div>
 
