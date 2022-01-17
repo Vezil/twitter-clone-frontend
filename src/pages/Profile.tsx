@@ -38,7 +38,7 @@ export default function Profile() {
                 <div className="profile">
                     <div className="profile-info">
                         <div className="profile-head">
-                            <span className="back-arrow" onClick={() => navigate(-1)}>
+                            <span className="back-arrow" onClick={() => navigate('/')}>
                                 <i className="fa fa-arrow-left" aria-hidden="true"></i>
                             </span>
                             <span className="nickname">

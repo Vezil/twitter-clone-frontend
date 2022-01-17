@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Navigate } from 'react-router-dom';
 import FollowUser from '../components/FollowUser';
 import LeftNav from '../components/LeftNav';
 import PopularTweets from '../components/PopularTweets';
@@ -27,6 +27,8 @@ export default function SingleUser() {
         return <p>{error ? error.message : meError?.message}</p>;
     }
 
+    const isMe = meData.me.id === parseInt(id);
+
     const openProfilePage = () => {
         window.open(`https://${data.user.profile.website}`, '_blank');
     };
@@ -42,7 +44,7 @@ export default function SingleUser() {
 
     const followerId = followers.find((follow: any) => follow.followId === data.user.id);
 
-    return (
+    return !isMe ? (
         <>
             <div className="primary">
                 <div className="left">
@@ -52,7 +54,7 @@ export default function SingleUser() {
                 <div className="profile">
                     <div className="profile-info">
                         <div className="profile-head">
-                            <span className="back-arrow" onClick={() => navigate(-1)}>
+                            <span className="back-arrow" onClick={() => navigate('/')}>
                                 <i className="fa fa-arrow-left" aria-hidden="true"></i>
                             </span>
                             <span className="nickname">
@@ -108,5 +110,7 @@ export default function SingleUser() {
                 </div>
             </div>
         </>
+    ) : (
+        <Navigate to="/profile" />
     );
 }
