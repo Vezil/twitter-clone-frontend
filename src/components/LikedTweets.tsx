@@ -23,11 +23,15 @@ export default function LikedTweets({ tweetsData }: any) {
             {tweetsData.likedTweets.map((tweetData: AllTweets) => (
                 <div className="tweet-container" key={tweetData.id}>
                     <div className="tweet-header">
-                        <img
-                            src={tweetData.tweet.author?.profile?.avatar}
-                            style={{ width: '40px', borderRadius: '50%' }}
-                            alt="avatar"
-                        />
+                        {tweetData.tweet.author?.profile?.avatar ? (
+                            <img
+                                src={tweetData.tweet.author.profile.avatar}
+                                style={{ width: '40px', borderRadius: '50%' }}
+                                alt="avatar"
+                            />
+                        ) : (
+                            <i className="fa fa-user fa-2x" aria-hidden="true"></i>
+                        )}
                         <Link to={`/user/${tweetData.tweet.author?.id}`} replace>
                             <h4 className="name">{tweetData.tweet.author?.name}</h4>
                         </Link>

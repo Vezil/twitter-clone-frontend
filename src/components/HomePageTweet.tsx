@@ -42,7 +42,7 @@ export default function HomePageTweet() {
             >
                 <Form>
                     <Field name="content" type="text" as="textarea" placeholder="What's happening..." />
-                    <ErrorMessage name="content" component={'div'} />
+                    <ErrorMessage name="content" render={msg => <div className="error-message">{msg}</div>} />
 
                     <button type="submit" className="home-tweet-button">
                         <span>Tweet</span>

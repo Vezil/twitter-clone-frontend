@@ -126,13 +126,13 @@ export default function UpdateProfile() {
                 >
                     <Form>
                         <Field name="bio" type="text" as="textarea" placeholder="Bio" />
-                        <ErrorMessage name="bio" component={'div'} />
+                        <ErrorMessage name="bio" render={msg => <div className="error-message">{msg}</div>} />
 
                         <Field name="location" type="location" placeholder="Location" />
-                        <ErrorMessage name="location" component={'div'} />
+                        <ErrorMessage name="location" render={msg => <div className="error-message">{msg}</div>} />
 
                         <Field name="website" type="website" placeholder="Website" />
-                        <ErrorMessage name="website" component={'div'} />
+                        <ErrorMessage name="website" render={msg => <div className="error-message">{msg}</div>} />
 
                         <button type="submit" className="login-register-button">
                             <span>Update Profile</span>

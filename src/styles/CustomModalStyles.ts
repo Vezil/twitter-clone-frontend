@@ -10,7 +10,8 @@ export const customStyles = {
         borderRadius: '25px',
         maxWidth: '40em',
         minWidth: '30em',
-        minHeight: '10em'
+        minHeight: '10em',
+        'overflow-x': 'hidden'
     },
     overlay: {
         background: '#9e9e9e69'

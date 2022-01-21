@@ -37,7 +37,7 @@ export default function Following() {
             </span>
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Modal" style={customStyles}>
-                <span className="exit" onClick={closeModal}>
+                <span className="exit" onClick={closeModal} style={{ cursor: 'pointer' }}>
                     <i className="fa fa-times" aria-hidden></i>
                 </span>
 
@@ -46,7 +46,15 @@ export default function Following() {
                     {data.me.followingUsers.map((person: any) => (
                         <div style={{ borderBottom: '1px solid lightGrey', padding: '5px' }} key={person.id}>
                             <div className="tweet-header">
-                                <img src={person.avatar} style={{ width: '40px', borderRadius: '50%' }} alt="avatar" />
+                                {person.avatar ? (
+                                    <img
+                                        src={person.avatar}
+                                        style={{ width: '40px', borderRadius: '50%' }}
+                                        alt="avatar"
+                                    />
+                                ) : (
+                                    <i className="fa fa-user fa-2x" aria-hidden="true"></i>
+                                )}
 
                                 <Link to={`/user/${person.followId}`} replace>
                                     <h4 className="name">{person.name}</h4>

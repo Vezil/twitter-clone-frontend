@@ -67,13 +67,17 @@ export default function CreateReply({ avatar, name, id, commentContent, commentI
             </span>
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Modal" style={customStyles}>
-                <span className="exit" onClick={closeModal}>
+                <span className="exit" onClick={closeModal} style={{ cursor: 'pointer' }}>
                     <i className="fa fa-times" aria-hidden></i>
                 </span>
 
                 <div className="header"></div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 8fr', marginTop: '10px' }}>
-                    <img src={avatar} style={{ width: '40px', borderRadius: '50%' }} alt="avatar" />
+                    {avatar ? (
+                        <img src={avatar} style={{ width: '40px', borderRadius: '50%' }} alt="avatar" />
+                    ) : (
+                        <i className="fa fa-user fa-5x" aria-hidden="true"></i>
+                    )}
                     <h5>{name}</h5>
                 </div>
 
@@ -105,10 +109,18 @@ export default function CreateReply({ avatar, name, id, commentContent, commentI
                     }}
                 >
                     <Form>
-                        <img src={data.me.profile.avatar} style={{ width: '40px', borderRadius: '50%' }} alt="avatar" />
+                        {data.me?.profile?.avatar ? (
+                            <img
+                                src={data.me.profile.avatar}
+                                style={{ width: '40px', borderRadius: '50%' }}
+                                alt="avatar"
+                            />
+                        ) : (
+                            <img src={avatar} style={{ width: '40px', borderRadius: '50%' }} alt="avatar" />
+                        )}
 
                         <Field name="content" type="text" as="textarea" placeholder="Tweet your reply..." />
-                        <ErrorMessage name="content" component={'div'} />
+                        <ErrorMessage name="content" render={msg => <div className="error-message">{msg}</div>} />
 
                         <div className="footer"></div>
 

@@ -57,3 +57,7 @@ h3 {
 .home-tweet-button:focus {
     outline: none;
 }
+
+.home-page-tweet > form > textarea {
+    margin-bottom: 25px;
+}

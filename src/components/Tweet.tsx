@@ -47,7 +47,7 @@ export default function Tweet() {
             </button>
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Modal" style={customStyles}>
-                <span className="exit" onClick={closeModal}>
+                <span className="exit" onClick={closeModal} style={{ cursor: 'pointer' }}>
                     <i className="fa fa-times" aria-hidden></i>
                 </span>
 
@@ -70,7 +70,7 @@ export default function Tweet() {
                 >
                     <Form>
                         <Field name="content" type="text" as="textarea" placeholder="What's happening..." />
-                        <ErrorMessage name="content" component={'div'} />
+                        <ErrorMessage name="content" render={msg => <div className="error-message">{msg}</div>} />
 
                         <div className="footer"></div>
 
