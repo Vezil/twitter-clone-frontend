@@ -65,7 +65,7 @@ export default function SingleUser() {
                         <div className="avatar">
                             {data.user?.profile?.avatar ? (
                                 <img
-                                    src={data.user?.profile?.avatar}
+                                    src={data.user.profile.avatar}
                                     style={{ width: '150px', borderRadius: '50%' }}
                                     alt="avatar"
                                 />

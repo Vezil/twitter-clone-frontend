@@ -61,7 +61,7 @@ export default function PopularTweets() {
                     </div>
 
                     <div className="tweet-likes">
-                        {tweet.likes.length > 0 ? <span>Likes {tweet.likes.length}</span> : null}
+                        {tweet.likes.length > 0 ? <span>Likes: {tweet.likes.length}</span> : null}
                     </div>
                 </div>
             ))}

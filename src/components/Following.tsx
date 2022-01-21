@@ -37,7 +37,7 @@ export default function Following() {
             </span>
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Modal" style={customStyles}>
-                <span className="exit" onClick={closeModal}>
+                <span className="exit" onClick={closeModal} style={{ cursor: 'pointer' }}>
                     <i className="fa fa-times" aria-hidden></i>
                 </span>
 

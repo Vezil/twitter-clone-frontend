@@ -63,11 +63,15 @@ export default function SingleTweet() {
                             padding: '10px'
                         }}
                     >
-                        <img
-                            src={data.tweet.author?.profile.avatar}
-                            style={{ width: '40px', borderRadius: '50%' }}
-                            alt="avatar"
-                        />
+                        {data.tweet.author?.profile?.avatar ? (
+                            <img
+                                src={data.tweet.author.profile.avatar}
+                                style={{ width: '40px', borderRadius: '50%' }}
+                                alt="avatar"
+                            />
+                        ) : (
+                            <i className="fa fa-user fa-2x" aria-hidden="true"></i>
+                        )}
                         <h5>{data.tweet.author?.profile?.name}</h5>
                     </div>
 
@@ -94,11 +98,15 @@ export default function SingleTweet() {
                                         marginLeft: '10px'
                                     }}
                                 >
-                                    <img
-                                        src={comment.user.profile.avatar}
-                                        style={{ width: '40px', borderRadius: '50%' }}
-                                        alt="avatar"
-                                    />
+                                    {comment.user.profile.avatar ? (
+                                        <img
+                                            src={comment.user.profile.avatar}
+                                            style={{ width: '40px', borderRadius: '50%' }}
+                                            alt="avatar"
+                                        />
+                                    ) : (
+                                        <i className="fa fa-user fa-2x" aria-hidden="true"></i>
+                                    )}
                                     <h5>{comment.user.name}</h5>
                                 </div>
                                 <p>{comment.content}</p>
