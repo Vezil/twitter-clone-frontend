@@ -1,8 +1,14 @@
 .logout {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     padding-left: 20px;
     padding-right: 20px;
+    cursor: pointer;
+}
+
+.more-options{
+    display: inline-block;
+    margin-left: 15px;
 }
 
 h4 {
