@@ -50,7 +50,7 @@ export default function SingleTweet() {
                 </div>
                 <div className="home">
                     <div className="home-header">
-                        <span className="back-arrow" onClick={() => navigate(-1)}>
+                        <span className="back-arrow" onClick={() => navigate('/')}>
                             <i className="fa fa-arrow-left" aria-hidden="true"></i>
                         </span>
 

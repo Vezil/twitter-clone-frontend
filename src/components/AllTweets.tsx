@@ -64,9 +64,9 @@ export default function AllTweets() {
                                 <h4 className="name">{tweet.author.name}</h4>
                             </div>
 
-                            <p className="date-time">
+                            <div className="date-time">
                                 {formatDistance(subDays(new Date(tweet.createdAt), 0), new Date())} ago
-                            </p>
+                            </div>
                         </div>
                     </Link>
 
@@ -74,13 +74,13 @@ export default function AllTweets() {
                         <p>{tweet.content}</p>
                     </Link>
 
-                    <div className="likes">
+                    <div className="likes-and-comments">
                         {meData.me.likedTweets &&
                         meData.me.likedTweets.length &&
                         meData.me.likedTweets
                             .map((likedTweet: LikedTweet) => likedTweet.tweet.id)
                             .includes(tweet.id) ? (
-                            <span>
+                            <span style={{ fontSize: '20px' }}>
                                 <DeleteLike
                                     id={meData.me.likedTweets.find((like: LikedTweet) => like.tweet.id === tweet.id).id}
                                 />
@@ -88,14 +88,21 @@ export default function AllTweets() {
                                 {tweet.likes?.length || 0}
                             </span>
                         ) : (
-                            <span>
+                            <span style={{ fontSize: '20px' }}>
                                 <LikeTweet id={tweet.id} />
 
                                 {tweet.likes?.length || 0}
                             </span>
                         )}
 
-                        <span style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                        <span
+                            style={{
+                                display: 'grid',
+                                gridTemplateColumns: '1fr 1fr',
+                                fontSize: '20px',
+                                marginLeft: '15px'
+                            }}
+                        >
                             <CreateComment
                                 avatar={tweet.author?.profile?.avatar}
                                 name={tweet.author.name}
