@@ -16,6 +16,7 @@
 
 .date {
     color: rgb(151, 149, 149) !important;
+    text-align: right;
 }
 
 .date-title {

@@ -45,6 +45,8 @@ export default function PopularTweets() {
             {getPopularTweets.map((tweet: Tweet) => (
                 <div className="popular-tweet-container" key={tweet.id}>
                     <div className="data-title">
+                        <div className="date">{format(new Date(tweet.createdAt), 'MM/dd/yy')}</div>
+
                         <div className="title-logo">
                             {tweet.author?.profile?.avatar ? (
                                 <img
@@ -57,7 +59,6 @@ export default function PopularTweets() {
                             )}
                             <p className="tweet-content">{tweet.content}</p>
                         </div>
-                        <span className="date">{format(new Date(tweet.createdAt), 'MM/dd/yy')}</span>
                     </div>
 
                     <div className="tweet-likes">
