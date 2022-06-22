@@ -44,12 +44,7 @@ export default function Logout() {
 
     return (
         <div className="logout">
-            <div
-                onClick={() => {
-                    navigate('/profile');
-                }}
-                style={{ flex: 1, flexDirection: 'row' }}
-            >
+            <div style={{ flex: 1, flexDirection: 'row' }} onClick={() => navigate('/profile')}>
                 <h4>
                     {me?.profile?.avatar ? (
                         <img src={me.profile.avatar} style={{ width: '50px', borderRadius: '50%' }} alt="avatar" />

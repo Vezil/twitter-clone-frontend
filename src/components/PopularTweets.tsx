@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { POPULAR_TWEETS } from '../gql/queries';
 import '../styles/popularTweets.css';
@@ -31,7 +32,7 @@ export default function PopularTweets() {
         return <p>{error.message}</p>;
     }
 
-    const getPopularTweets = data.tweets
+    const popularTweets = data.tweets
         .map((tweet: Tweet) => tweet)
         .sort(function (tweetA: Tweet, tweetB: Tweet) {
             return tweetB.likes.length - tweetA.likes.length;
@@ -42,30 +43,34 @@ export default function PopularTweets() {
         <div className="popular-tweets">
             <h3 className="trending">Trending</h3>
 
-            {getPopularTweets.map((tweet: Tweet) => (
-                <div className="popular-tweet-container" key={tweet.id}>
-                    <div className="data-title">
-                        <div className="date">{format(new Date(tweet.createdAt), 'MM/dd/yy')}</div>
+            <div className="popular-tweets-container">
+                {popularTweets.map((tweet: Tweet) => (
+                    <div className="popular-tweet-container" key={tweet.id}>
+                        <Link to={`/tweet/${tweet.id}`} replace>
+                            <div className="data-title">
+                                <div className="date">{format(new Date(tweet.createdAt), 'MM/dd/yy')}</div>
 
-                        <div className="title-logo">
-                            {tweet.author?.profile?.avatar ? (
-                                <img
-                                    src={tweet.author.profile.avatar}
-                                    style={{ width: '40px', borderRadius: '50%' }}
-                                    alt="avatar"
-                                />
-                            ) : (
-                                <i className="fa fa-user fa-2x" aria-hidden="true"></i>
-                            )}
-                            <p className="tweet-content">{tweet.content}</p>
-                        </div>
-                    </div>
+                                <div className="title-logo">
+                                    {tweet.author?.profile?.avatar ? (
+                                        <img
+                                            src={tweet.author.profile.avatar}
+                                            style={{ width: '40px', borderRadius: '50%' }}
+                                            alt="avatar"
+                                        />
+                                    ) : (
+                                        <i className="fa fa-user fa-2x" aria-hidden="true"></i>
+                                    )}
+                                    <p className="tweet-content">{tweet.content}</p>
+                                </div>
+                            </div>
 
-                    <div className="tweet-likes">
-                        {tweet.likes.length > 0 ? <span>Likes: {tweet.likes.length}</span> : null}
+                            <div className="tweet-likes">
+                                {tweet.likes.length > 0 ? <span>Likes: {tweet.likes.length}</span> : null}
+                            </div>
+                        </Link>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 }
