@@ -80,7 +80,7 @@ export default function AllTweets() {
                         meData.me.likedTweets
                             .map((likedTweet: LikedTweet) => likedTweet.tweet.id)
                             .includes(tweet.id) ? (
-                            <span style={{ fontSize: '20px' }}>
+                            <span className="action">
                                 <DeleteLike
                                     id={meData.me.likedTweets.find((like: LikedTweet) => like.tweet.id === tweet.id).id}
                                 />
@@ -88,7 +88,7 @@ export default function AllTweets() {
                                 {tweet.likes?.length || 0}
                             </span>
                         ) : (
-                            <span style={{ fontSize: '20px' }}>
+                            <span className="action">
                                 <LikeTweet id={tweet.id} />
 
                                 {tweet.likes?.length || 0}
@@ -96,11 +96,11 @@ export default function AllTweets() {
                         )}
 
                         <span
+                            className="action"
                             style={{
                                 display: 'grid',
                                 gridTemplateColumns: '1fr 1fr',
-                                fontSize: '20px',
-                                marginLeft: '15px'
+                                marginLeft: '10px'
                             }}
                         >
                             <CreateComment

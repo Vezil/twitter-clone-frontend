@@ -41,7 +41,7 @@ export default function PopularTweets() {
 
     return (
         <div className="popular-tweets">
-            <h3 className="trending">Trending</h3>
+            <div className="popular-tweets-label">Trending</div>
 
             <div className="popular-tweets-container">
                 {popularTweets.map((tweet: Tweet) => (

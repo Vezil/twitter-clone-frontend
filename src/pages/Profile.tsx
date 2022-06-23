@@ -81,9 +81,9 @@ export default function Profile() {
                             <p>70 followers</p>
                         </div>
                     </div>
-                </div>
 
-                <LikedTweets tweetsData={data.me} />
+                    <LikedTweets tweetsData={data.me} />
+                </div>
 
                 <div className="right">
                     <PopularTweets />

@@ -31,7 +31,11 @@ p {
 
 .likes-and-comments {
     display: grid;
-    grid-template-columns: 1fr 1fr 10fr;
+    grid-template-columns: 1.5fr 1.5fr 10fr;
     margin-left: 10px;
     margin-bottom: 10px;
+}
+
+.action {
+    font-size: 20px;
 }
