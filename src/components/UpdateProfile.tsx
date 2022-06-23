@@ -125,7 +125,13 @@ export default function UpdateProfile() {
                     }}
                 >
                     <Form>
-                        <Field name="bio" type="text" as="textarea" placeholder="Bio" />
+                        <Field
+                            name="bio"
+                            type="text"
+                            as="textarea"
+                            placeholder="Bio"
+                            style={{ marginBottom: '25px' }}
+                        />
                         <ErrorMessage name="bio" render={msg => <div className="error-message">{msg}</div>} />
 
                         <Field name="location" type="location" placeholder="Location" />

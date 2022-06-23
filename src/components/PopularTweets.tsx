@@ -46,10 +46,10 @@ export default function PopularTweets() {
             <div className="popular-tweets-container">
                 {popularTweets.map((tweet: Tweet) => (
                     <div className="popular-tweet-container" key={tweet.id}>
+                        <div className="popular-tweet-date">{format(new Date(tweet.createdAt), 'MM/dd/yy')}</div>
+
                         <Link to={`/tweet/${tweet.id}`} replace>
                             <div className="data-title">
-                                <div className="date">{format(new Date(tweet.createdAt), 'MM/dd/yy')}</div>
-
                                 <div className="title-logo">
                                     {tweet.author?.profile?.avatar ? (
                                         <img
