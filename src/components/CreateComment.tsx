@@ -125,7 +125,10 @@ export default function CreateComment({ tweetContent, avatar, name, id }: Props)
                         )}
 
                         <Field name="content" type="text" as="textarea" placeholder="Tweet your reply..." />
-                        <ErrorMessage name="content" render={msg => <div className="error-message">{msg}</div>} />
+                        <ErrorMessage
+                            name="content"
+                            render={(msg: string) => <div className="error-message">{msg}</div>}
+                        />
 
                         <div className="footer"></div>
 

@@ -27,14 +27,15 @@
 .right {
     grid-column: 3 / 4;
     margin-left: 20px;
+    overflow-y: auto;
 
     @media only screen and (max-width: 900px) {
         display: none;
     }
+
 }
 
 .right div {
-    position: sticky;
     top: 0;
 }
 

@@ -32,7 +32,7 @@ export default function Following() {
 
     return (
         <div>
-            <span onClick={openModal}>
+            <span onClick={openModal} style={{ cursor: 'pointer' }}>
                 <p>Following {data.me.followingUsers.length}</p>
             </span>
 

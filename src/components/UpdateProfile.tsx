@@ -97,6 +97,10 @@ export default function UpdateProfile() {
                     <h3>Loading...</h3>
                 ) : (
                     <>
+                        <span className="exit" onClick={closeModal}>
+                            <i className="fa fa-times" aria-hidden></i>
+                        </span>
+
                         {image ? (
                             <div onClick={() => inputFile?.current?.click()} className="profile-icon">
                                 <img src={image} style={{ width: '150px', borderRadius: '50%' }} alt="avatar" />
@@ -125,7 +129,13 @@ export default function UpdateProfile() {
                     }}
                 >
                     <Form>
-                        <Field name="bio" type="text" as="textarea" placeholder="Bio" />
+                        <Field
+                            name="bio"
+                            type="text"
+                            as="textarea"
+                            placeholder="Bio"
+                            style={{ marginBottom: '25px' }}
+                        />
                         <ErrorMessage name="bio" render={msg => <div className="error-message">{msg}</div>} />
 
                         <Field name="location" type="location" placeholder="Location" />

@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { useState } from 'react';
+import { useState, MouseEvent } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import { ME_QUERY } from '../gql/queries';
@@ -26,7 +26,9 @@ export default function Logout() {
 
     const { me } = data;
 
-    const openModal = () => {
+    const openModal = (event: MouseEvent) => {
+        event.stopPropagation();
+
         setIsOpen(true);
     };
 
@@ -42,7 +44,7 @@ export default function Logout() {
 
     return (
         <div className="logout">
-            <span onClick={openModal} style={{ flex: 1, flexDirection: 'row' }}>
+            <div style={{ flex: 1, flexDirection: 'row' }} onClick={() => navigate('/profile')}>
                 <h4>
                     {me?.profile?.avatar ? (
                         <img src={me.profile.avatar} style={{ width: '50px', borderRadius: '50%' }} alt="avatar" />
@@ -51,11 +53,11 @@ export default function Logout() {
                     )}
 
                     <span style={{ marginLeft: '10px', marginTop: '-10px' }}>{me.name}</span>
-                    <span style={{ marginLeft: '30px' }}>
+                    <div onClick={openModal} className="more-options">
                         <i className="fas fa-ellipsis-h"></i>
-                    </span>
+                    </div>
                 </h4>
-            </span>
+            </div>
 
             <div style={{ position: 'absolute', bottom: 0 }}>
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Modal" style={logoutModalStyles}>

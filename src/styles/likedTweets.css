@@ -1,0 +1,19 @@
+.liked-tweets-container {
+   margin-top: 25px;
+}
+
+.liked-tweets-label {
+    font-size: 20px;
+    text-align: center;
+    font-family: Helvetica Neue;
+    font-weight: 600;
+    color: #55abee;
+    font-style: italic;
+}
+
+.liked-tweet-container{
+    border-bottom: 1px solid var(--accent);
+    margin-top: 10px;
+    padding: 10px;
+}
+
