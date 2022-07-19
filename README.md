@@ -2,7 +2,7 @@
 
 ### DEMO : https://vezil-twitter-clone.netlify.app/
 
-### Back-End Repo: https://github.com/Vezil/twitter-clone-backend
+#### Back-End Repo: https://github.com/Vezil/twitter-clone-backend
 
 #### Tech-stack (frontend): React/React-Router/Typescript/Formik/Date-Fns
 
