@@ -72,7 +72,7 @@ export default function Login() {
                     <ErrorMessage
                         name="email"
                         render={msg => (
-                            <div className="login-register-error-message" style={{ marginTop: -20, marginBottom: 5 }}>
+                            <div className="login-register-error-message">
                                 {msg}
                             </div>
                         )}
@@ -82,14 +82,14 @@ export default function Login() {
                     <ErrorMessage
                         name="password"
                         render={msg => (
-                            <div className="login-register-error-message" style={{ marginTop: -20, marginBottom: 5 }}>
+                            <div className="login-register-error-message">
                                 {msg}
                             </div>
                         )}
                     />
 
                     {isErrorFromServer ? (
-                        <div className="login-register-error-message" style={{ marginTop: -20, marginBottom: 5 }}>
+                        <div className="login-register-error-message">
                             Your credentails are incorrect
                         </div>
                     ) : null}
