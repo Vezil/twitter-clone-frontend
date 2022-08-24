@@ -1,6 +1,7 @@
 import { useMutation } from '@apollo/client';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import * as Yup from 'yup';
 import { LOGIN_MUTATION } from '../gql/mutations';
 import TwitterLogo from '../styles/assets/twitter-logo.png';
@@ -15,6 +16,8 @@ export default function Login() {
     const navigate = useNavigate();
     const [login] = useMutation(LOGIN_MUTATION);
 
+    let [isErrorFromServer, setIsError] = useState(false);
+
     const initialValues: LoginValues = {
         email: '',
         password: ''
@@ -24,6 +27,10 @@ export default function Login() {
         email: Yup.string().email('Invalid email address').required('Email required'),
         password: Yup.string().max(20, 'Must be 20 characters or less').required('Password required')
     });
+
+    const setIsErrorFromServer = (value: boolean) => {
+        setIsError(value);
+    };
 
     return (
         <div className="container">
@@ -35,23 +42,57 @@ export default function Login() {
                 onSubmit={async (values, { setSubmitting }) => {
                     setSubmitting(true);
 
-                    const { data } = await login({
-                        variables: values
-                    });
+                    let token = null;
 
-                    localStorage.setItem('token', data.login.token);
+                    try {
+                        const { data } = await login({
+                            variables: values
+                        });
 
-                    setSubmitting(false);
+                        setIsErrorFromServer(false);
 
-                    navigate('/');
+                        token = data.login.token;
+                    } catch (error) {
+                        setIsErrorFromServer(true);
+
+                        console.error(error);
+                    }
+
+                    if (token) {
+                        localStorage.setItem('token', token);
+
+                        setSubmitting(false);
+
+                        navigate('/');
+                    }
                 }}
             >
                 <Form>
                     <Field name="email" type="text" placeholder="Email" />
-                    <ErrorMessage name="email" render={msg => <div className="error-message">{msg}</div>} />
+                    <ErrorMessage
+                        name="email"
+                        render={msg => (
+                            <div className="login-register-error-message">
+                                {msg}
+                            </div>
+                        )}
+                    />
 
                     <Field name="password" type="password" placeholder="Password" />
-                    <ErrorMessage name="password" render={msg => <div className="error-message">{msg}</div>} />
+                    <ErrorMessage
+                        name="password"
+                        render={msg => (
+                            <div className="login-register-error-message">
+                                {msg}
+                            </div>
+                        )}
+                    />
+
+                    {isErrorFromServer ? (
+                        <div className="login-register-error-message">
+                            Your credentails are incorrect
+                        </div>
+                    ) : null}
 
                     <button type="submit" className="login-register-button">
                         <span>Login</span>

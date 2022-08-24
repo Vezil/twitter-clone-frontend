@@ -55,16 +55,16 @@ export default function Signup() {
             >
                 <Form>
                     <Field name="email" type="text" placeholder="Email" />
-                    <ErrorMessage name="email" render={msg => <div className="error-message">{msg}</div>} />
+                    <ErrorMessage name="email" render={msg => <div className="login-register-error-message">{msg}</div>} />
 
                     <Field name="name" type="text" placeholder="Name" />
-                    <ErrorMessage name="name" render={msg => <div className="error-message">{msg}</div>} />
+                    <ErrorMessage name="name" render={msg => <div className="login-register-error-message">{msg}</div>} />
 
                     <Field name="password" type="password" placeholder="Password" />
-                    <ErrorMessage name="password" render={msg => <div className="error-message">{msg}</div>} />
+                    <ErrorMessage name="password" render={msg => <div className="login-register-error-message">{msg}</div>} />
 
                     <Field name="repeatPassword" type="password" placeholder="Repeat Password" />
-                    <ErrorMessage name="repeatPassword" render={msg => <div className="error-message">{msg}</div>} />
+                    <ErrorMessage name="repeatPassword" render={msg => <div className="login-register-error-message">{msg}</div>} />
 
                     <button type="submit" className="login-register-button">
                         <span>Signup</span>
